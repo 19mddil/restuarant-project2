@@ -9,7 +9,6 @@ class Menu extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state);
         axios.get('http://localhost:3001/dishes')
             .then(res => res.data)
             .then(data => this.setState({
@@ -23,6 +22,7 @@ class Menu extends Component {
     }
 
     render() {
+
         const menu = this.state.dishes.map(item => {
             return (
                 <MenuItem dish={item} key={item.id} />
