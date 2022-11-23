@@ -11,7 +11,7 @@ const MenuItem = props => {
                         src={'http://localhost:3001/' + props.dish.image}
                     />
                     <CardImgOverlay>
-                        <CardTitle>
+                        <CardTitle className="CardTitle" onClick={props.onDishTitleSelect}>
                             {props.dish.name}
                         </CardTitle>
                     </CardImgOverlay>

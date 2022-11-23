@@ -9,3 +9,15 @@
 .CardImg {
   opacity: 0.5;
 }
+
+.CardTitle {
+  cursor: pointer;
+}
+
+.dishDetailCard {
+  margin-top: 10px;
+}
+
+.dishDetailCardBody {
+  text-align: left !important;
+}

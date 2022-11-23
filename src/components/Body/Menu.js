@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import MenuItem from "./MenuItem";
+import DishDetail from "./DishDetail";
 
 class Menu extends Component {
     state = {
         dishes: [],
         errMessage: '',
+        selectedDish: null,
+    }
+
+
+    onDishTitleSelect = dish => {
+        this.setState({
+            selectedDish: dish,
+        })
     }
 
     componentDidMount() {
@@ -25,7 +34,7 @@ class Menu extends Component {
 
         const menu = this.state.dishes.map(item => {
             return (
-                <MenuItem dish={item} key={item.id} />
+                <MenuItem dish={item} key={item.id} onDishTitleSelect={() => this.onDishTitleSelect(item)} />
             )
         });
 
@@ -34,6 +43,11 @@ class Menu extends Component {
                 <div className="row">
                     <div className="col-6">
                         {menu}
+                    </div>
+                    <div className="col-6">
+                        {
+                            (this.state.selectedDish != null) ? (<DishDetail dish={this.state.selectedDish} />) : null
+                        }
                     </div>
                 </div>
             </div>
