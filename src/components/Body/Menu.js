@@ -5,16 +5,19 @@ import DishDetail from "./DishDetail";
 
 class Menu extends Component {
     state = {
-        dishes: [],
+        dishes: null,
         errMessage: '',
         selectedDish: null,
+        allComments: null,
+        filteredComments: null,
     }
 
 
     onDishTitleSelect = dish => {
         this.setState({
             selectedDish: dish,
-        })
+            filteredComments: this.state.allComments.filter(comment => comment.dishId === dish.id)
+        });
     }
 
     componentDidMount() {
@@ -24,6 +27,11 @@ class Menu extends Component {
                 dishes: data,
             }))
             .catch(err => this.setState({ errMessage: err.message }));
+        axios.get('http://localhost:3001/comments')
+            .then(res => res.data)
+            .then(data => this.setState({
+                allComments: data,
+            }))
     }
 
     componentDidUpdate() {
@@ -32,21 +40,22 @@ class Menu extends Component {
 
     render() {
 
-        const menu = this.state.dishes.map(item => {
-            return (
-                <MenuItem dish={item} key={item.id} onDishTitleSelect={() => this.onDishTitleSelect(item)} />
-            )
-        });
 
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-6">
-                        {menu}
+                        {
+                            this.state.dishes != null ? this.state.dishes.map(item => {
+                                return (
+                                    <MenuItem dish={item} key={item.id} onDishTitleSelect={() => this.onDishTitleSelect(item)} />
+                                )
+                            }) : null
+                        }
                     </div>
                     <div className="col-6">
                         {
-                            (this.state.selectedDish != null) ? (<DishDetail dish={this.state.selectedDish} />) : null
+                            this.state.selectedDish != null ? (<DishDetail key={this.state.selectedDish.id} dish={this.state.selectedDish} comments={this.state.filteredComments} />) : null
                         }
                     </div>
                 </div>
