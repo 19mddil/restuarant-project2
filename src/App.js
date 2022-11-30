@@ -1,10 +1,13 @@
 import './App.css';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import MainComponent from './components/MainComponent';
 
 const App = () => (
   <div className="App">
-    <MainComponent />
+    <BrowserRouter>
+      <MainComponent />
+    </BrowserRouter>
   </div>
 )
 export default App;
