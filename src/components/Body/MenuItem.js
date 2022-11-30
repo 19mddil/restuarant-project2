@@ -17,7 +17,6 @@ const MenuItem = props => {
                     </CardImgOverlay>
                 </CardBody>
             </Card>
-
         </div>
     )
 }
