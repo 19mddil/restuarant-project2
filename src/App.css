@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
 /* .MenuItem {
@@ -9,8 +10,8 @@
 
 .Card {
   margin: 10px;
-
 }
+
 
 .CardImg {
   opacity: 0.5;

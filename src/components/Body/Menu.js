@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import MenuItem from "./MenuItem";
 import DishDetail from "./DishDetail";
-import { CardColumns, Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { CardColumns, Modal, ModalBody, ModalFooter, Button, CardGroup } from 'reactstrap';
 
 
 class Menu extends Component {
@@ -63,9 +63,9 @@ class Menu extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <CardColumns>
+                    <CardGroup>
                         {menu}
-                    </CardColumns>
+                    </CardGroup>
                     <Modal isOpen={this.state.isModalOpen}>
                         <ModalBody>
                             {dishDetail}
