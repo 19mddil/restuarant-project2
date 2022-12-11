@@ -8,11 +8,11 @@ import { CardColumns, Modal, ModalBody, ModalFooter, Button, CardGroup } from 'r
 class Menu extends Component {
     state = {
         dishes: null,
-        errMessage: '',
         selectedDish: null,
         allComments: null,
         filteredComments: null,
         isModalOpen: false,
+        errMessage: '',
     }
 
 
